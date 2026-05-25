@@ -1,0 +1,45 @@
+/* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
+
+* { 
+  box-sizing: border-box; 
+}
+
+html, body, #root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #FFFFFF; /* Blanc Pur absolu */
+  color: #0F172A; /* Slate 900 - Un noir/bleu très profond et chic */
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Sélection de texte stricte */
+::selection {
+  background: #2563EB; /* Bleu électrique tech */
+  color: #fff;
+}
+
+/* Grille de fond architecturale */
+.tech-grid {
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Space Grotesk', sans-serif;
+  margin: 0;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+}
