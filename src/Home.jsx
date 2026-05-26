@@ -3,7 +3,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowRight, ArrowUpRight, Code2, Database, Layout, Mail, Terminal, ChevronDown, PenTool, Box, Phone } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { projectsData, passionsData } from './data'; // J'ai retiré labData d'ici
+import { projectsData, passionsData } from './data';
 
 // ==========================================
 // 🧲 COMPOSANT : BOUTON MAGNÉTIQUE
@@ -274,9 +274,9 @@ const ProjectCard = ({ project, onClick, index }) => {
       onClick={onClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', backgroundColor: '#fff', border: '1px solid #E2E8F0', cursor: 'pointer', overflow: 'hidden' }}
+      style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', backgroundColor: '#fff', border: '1px solid #E2E8F0', cursor: 'pointer', overflow: 'hidden' }}
     >
-      <div style={{ overflow: 'hidden', borderRight: '1px solid #E2E8F0', position: 'relative' }}>
+      <div style={{ overflow: 'hidden', borderRight: '1px solid #E2E8F0', position: 'relative', minHeight: '300px' }}>
         <motion.div 
           style={{ position: 'absolute', inset: -20, backgroundImage: `url(${project.image})`, backgroundSize: 'cover', backgroundPosition: 'center', y: yParallax }} 
           animate={{ scale: hovered ? 1.05 : 1 }}
@@ -366,7 +366,7 @@ export default function Home() {
                 <span className="mono" style={{ fontWeight: '700', fontSize: '0.9rem', color: '#0F172A' }}>SAJID.F</span>
               </div>
             </Magnetic>
-            <div style={{ display: 'flex', gap: '40px', alignItems: 'center' }}>
+            <div className="nav-links" style={{ display: 'flex', gap: '40px', alignItems: 'center' }}>
               <Magnetic><a href="#expertise" className="mono" style={{ color: '#64748B', textDecoration: 'none', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Expertise</a></Magnetic>
               <Magnetic><a href="#projets" className="mono" style={{ color: '#64748B', textDecoration: 'none', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Projets</a></Magnetic>
               <Magnetic><a href="#passions" className="mono" style={{ color: '#64748B', textDecoration: 'none', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Passions</a></Magnetic>
@@ -380,7 +380,7 @@ export default function Home() {
 
           {/* ===== HERO SECTION ===== */}
           <section style={{ minHeight: '100vh', paddingTop: '150px', paddingBottom: '100px', display: 'flex', alignItems: 'center', position: 'relative', zIndex: 1 }}>
-            <div style={{ padding: '0 5%', width: '100%', maxWidth: '1600px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'center' }}>
+            <div style={{ padding: '0 5%', width: '100%', maxWidth: '1600px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px', alignItems: 'center' }}>
               
               <div>
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease }} style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '6px 16px', backgroundColor: '#F1F5F9', border: '1px solid #E2E8F0', borderRadius: '100px', marginBottom: '40px' }}>
@@ -511,7 +511,7 @@ export default function Home() {
           {/* ===== ARCHITECTURE DE PENSÉE ===== */}
           <section id="storytelling" style={{ padding: '120px 5%', backgroundColor: '#0F172A', color: '#fff', position: 'relative', zIndex: 1 }}>
             <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '80px', alignItems: 'center' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '80px', alignItems: 'center' }}>
                 
                 <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
                   <PenTool size={40} color="#2563EB" style={{ marginBottom: '30px' }} />
@@ -559,7 +559,7 @@ export default function Home() {
                 <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: '700', letterSpacing: '-1.5px' }}>Mes passions</h2>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '1px', backgroundColor: '#E2E8F0', border: '1px solid #E2E8F0' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1px', backgroundColor: '#E2E8F0', border: '1px solid #E2E8F0' }}>
                 {passionsData.map((passion) => (
                   <motion.div 
                     key={passion.id} 

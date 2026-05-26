@@ -33,14 +33,11 @@ export default function Project() {
   const { id } = useParams();
   const navigate = useNavigate();
   
-  // Logique pour trouver le projet actuel, le précédent et le suivant
   const currentIndex = projectsData.findIndex(p => p.id === id);
   const project = projectsData[currentIndex];
   
-  // Si le projet n'existe pas, on arrête là
   if (!project) return <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Link to="/">Retour</Link></div>;
 
-  // Calcul dynamique du projet précédent et suivant (avec effet boucle)
   const prevIndex = (currentIndex - 1 + projectsData.length) % projectsData.length;
   const nextIndex = (currentIndex + 1) % projectsData.length;
   const prevProject = projectsData[prevIndex];
@@ -50,7 +47,6 @@ export default function Project() {
   const { scrollYProgress } = useScroll();
   const yParallax = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
 
-  // Remonte en haut de la page quand l'ID du projet change (quand on clique sur "Projet suivant")
   useEffect(() => { window.scrollTo(0, 0); }, [id]);
 
   const ease = [0.16, 1, 0.3, 1];
@@ -99,7 +95,7 @@ export default function Project() {
 
       {/* CORPS DU PROJET */}
       <section style={{ paddingLeft: '5%', paddingRight: '5%', marginBottom: '120px' }}>
-        <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 2.5fr', gap: '80px', alignItems: 'start' }}>
+        <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '80px', alignItems: 'start' }}>
           
           {/* SIDEBAR TECH */}
           <motion.div variants={containerStagger} initial="hidden" animate="visible" style={{ background: 'rgba(255, 255, 255, 0.6)', backdropFilter: 'blur(20px)', border: '1px solid rgba(226, 232, 240, 0.8)', padding: '50px', borderRadius: '24px', display: 'flex', flexDirection: 'column', gap: '40px', position: 'sticky', top: '140px', boxShadow: '0 20px 40px rgba(0,0,0,0.02)' }}>
@@ -124,7 +120,6 @@ export default function Project() {
               </div>
             </motion.div>
             
-            {/* BOUTON URL */}
             {project.url && (
               <motion.div variants={itemStagger} style={{ marginTop: '10px' }}>
                 <a href={project.url} target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', backgroundColor: '#0F172A', color: '#fff', padding: '18px', textDecoration: 'none', fontWeight: '600', borderRadius: '12px', fontSize: '1rem' }}>
@@ -133,7 +128,6 @@ export default function Project() {
               </motion.div>
             )}
 
-            {/* BOUTON TÉLÉCHARGER CV */}
             {project.document && (
               <motion.div variants={itemStagger} style={{ marginTop: '0px' }}>
                 <motion.a 
@@ -149,7 +143,6 @@ export default function Project() {
                 </motion.a>
               </motion.div>
             )}
-
           </motion.div>
 
           {/* CONTENU ULTRA-DÉTAILLÉ */}
@@ -181,7 +174,7 @@ export default function Project() {
                 <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}>
                   <span className="mono" style={{ color: project.color, fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '10px' }}><Bug size={20} /> Résolution de problèmes</span>
                   <h3 style={{ fontSize: '2.5rem', fontWeight: '700', letterSpacing: '-1px', marginBottom: '30px', color: '#0F172A' }}>Défis Techniques & Solutions</h3>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '30px' }}>
                     {project.deepDive.challenges.map((challenge, i) => (
                       <div key={i} style={{ backgroundColor: '#fff', border: '1px solid #E2E8F0', padding: '30px', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.02)' }}>
                         <h4 style={{ fontSize: '1.3rem', fontWeight: '700', marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -193,7 +186,7 @@ export default function Project() {
                   </div>
                 </motion.div>
 
-                {/* 04. EXTRAIT DE CODE STYLISÉ (VS CODE LIKE) */}
+                {/* 04. EXTRAIT DE CODE */}
                 <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}>
                   <span className="mono" style={{ color: project.color, fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '10px' }}><TerminalSquare size={20} /> Inspection</span>
                   <h3 style={{ fontSize: '2.5rem', fontWeight: '700', letterSpacing: '-1px', marginBottom: '30px', color: '#0F172A' }}>Analyse d'Implémentation</h3>
@@ -233,7 +226,7 @@ export default function Project() {
               <p className="mono" style={{ color: '#64748B', fontSize: '0.85rem' }}>* CLIQUEZ SUR UNE IMAGE POUR AGRANDIR</p>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: `repeat(auto-fit, minmax(400px, 1fr))`, gap: '40px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: `repeat(auto-fit, minmax(280px, 1fr))`, gap: '40px' }}>
               {project.gallery.map((imgUrl, index) => (
                 <motion.div 
                   key={index}
@@ -257,12 +250,12 @@ export default function Project() {
         </section>
       )}
 
-      {/* ===== NOUVELLE SECTION : NAVIGATION INTER-PROJETS ===== */}
+      {/* ===== NAVIGATION INTER-PROJETS ===== */}
       <section style={{ backgroundColor: '#F8FAFC', borderTop: '1px solid #E2E8F0', borderBottom: '1px solid #E2E8F0' }}>
         <div style={{ display: 'flex', maxWidth: '1400px', margin: '0 auto', flexWrap: 'wrap' }}>
           
           {/* Bloc Projet Précédent */}
-          <motion.div whileHover={{ backgroundColor: '#F1F5F9' }} style={{ flex: '1 1 50%', borderRight: '1px solid #E2E8F0', transition: 'background 0.3s' }}>
+          <motion.div whileHover={{ backgroundColor: '#F1F5F9' }} style={{ flex: '1 1 50%', borderRight: '1px solid #E2E8F0', transition: 'background 0.3s', minWidth: '300px' }}>
             <Link to={`/projet/${prevProject.id}`} style={{ display: 'block', padding: '60px 5%', textDecoration: 'none', color: '#0F172A', height: '100%' }}>
               <span className="mono" style={{ color: '#64748B', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '2px', display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '15px' }}>
                 <ArrowLeft size={18} /> Projet précédent
@@ -272,7 +265,7 @@ export default function Project() {
           </motion.div>
 
           {/* Bloc Projet Suivant */}
-          <motion.div whileHover={{ backgroundColor: '#F1F5F9' }} style={{ flex: '1 1 50%', transition: 'background 0.3s' }}>
+          <motion.div whileHover={{ backgroundColor: '#F1F5F9' }} style={{ flex: '1 1 50%', transition: 'background 0.3s', minWidth: '300px' }}>
             <Link to={`/projet/${nextProject.id}`} style={{ display: 'block', padding: '60px 5%', textDecoration: 'none', color: '#0F172A', height: '100%', textAlign: 'right' }}>
               <span className="mono" style={{ color: '#64748B', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '2px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '10px', marginBottom: '15px' }}>
                 Projet suivant <ArrowRight size={18} />

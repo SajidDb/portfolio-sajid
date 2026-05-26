@@ -43,3 +43,26 @@ h1, h2, h3, h4, h5 {
 .mono {
   font-family: 'JetBrains Mono', monospace;
 }
+
+/* CORRECTIFS MOBILE */
+@media (max-width: 768px) {
+  /* Masque les liens textes du menu sur petit écran, garde le bouton contact */
+  .nav-links a {
+    display: none !important;
+  }
+  
+  /* Réduit la taille des énormes titres numérotés en arrière-plan */
+  div[style*="fontSize: 12rem"] {
+    font-size: 6rem !important;
+    top: -20px !important;
+    left: -10px !important;
+  }
+  
+  /* Ajoute un peu de marge sur les gros titres pour qu'ils respirent sur téléphone */
+  h1 {
+    font-size: 3rem !important;
+  }
+  h2 {
+    font-size: 2.5rem !important;
+  }
+}
