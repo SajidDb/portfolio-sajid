@@ -86,7 +86,7 @@ export default function Profil() {
 
       {/* ===== HEADER : IDENTITÉ & OBJECTIF ===== */}
       <header style={{ paddingTop: '180px', paddingBottom: '80px', paddingLeft: '5%', paddingRight: '5%' }}>
-        <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '60px', alignItems: 'center' }}>
+        <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '60px', alignItems: 'center' }}>
           
           <div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease }} style={{ marginBottom: '20px' }}>
@@ -138,41 +138,42 @@ export default function Profil() {
             <p style={{ color: '#64748B', fontSize: '1.1rem' }}>Mon parcours académique.</p>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '30px', position: 'relative' }}>
-            <div style={{ position: 'absolute', left: '39px', top: '20px', bottom: '20px', width: '2px', backgroundColor: '#E2E8F0', zIndex: 0 }} />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(20px, 4vw, 30px)', position: 'relative' }}>
+            {/* Ligne verticale cachée sur très petits écrans pour éviter les bugs */}
+            <div style={{ position: 'absolute', left: 'clamp(20px, 8vw, 39px)', top: '20px', bottom: '20px', width: '2px', backgroundColor: '#E2E8F0', zIndex: 0 }} />
 
             {/* BUT Informatique */}
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ display: 'flex', gap: '30px', alignItems: 'flex-start', position: 'relative', zIndex: 1 }}>
-              <div style={{ width: '80px', height: '80px', borderRadius: '50%', backgroundColor: '#2563EB', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, border: '4px solid #F8FAFC' }}>
-                <GraduationCap size={30} color="#fff" />
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ display: 'flex', gap: 'clamp(15px, 4vw, 30px)', alignItems: 'flex-start', position: 'relative', zIndex: 1 }}>
+              <div style={{ width: 'clamp(50px, 12vw, 80px)', height: 'clamp(50px, 12vw, 80px)', borderRadius: '50%', backgroundColor: '#2563EB', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, border: '4px solid #F8FAFC' }}>
+                <GraduationCap size={30} color="#fff" style={{ width: 'clamp(20px, 6vw, 30px)' }} />
               </div>
-              <div style={{ backgroundColor: '#fff', padding: '30px', borderRadius: '12px', border: '1px solid #E2E8F0', flex: 1 }}>
+              <div style={{ backgroundColor: '#fff', padding: 'clamp(20px, 5vw, 30px)', borderRadius: '12px', border: '1px solid #E2E8F0', flex: 1 }}>
                 <span className="mono" style={{ color: '#64748B', fontSize: '0.85rem', fontWeight: '700', marginBottom: '10px', display: 'block' }}>2024 - 2027 (En cours)</span>
-                <h3 style={{ fontSize: '1.5rem', fontWeight: '700', margin: '0 0 10px 0' }}>B.U.T Informatique</h3>
+                <h3 style={{ fontSize: 'clamp(1.2rem, 4vw, 1.5rem)', fontWeight: '700', margin: '0 0 10px 0' }}>B.U.T Informatique</h3>
                 <p style={{ color: '#475569', margin: 0, lineHeight: '1.6' }}>IUT d'Amiens (Université de Picardie Jules Verne). <br/>Développement complet, administration de bases de données, gestion de projet Agile et architecture réseau.</p>
               </div>
             </motion.div>
 
             {/* Baccalauréat */}
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ display: 'flex', gap: '30px', alignItems: 'flex-start', position: 'relative', zIndex: 1 }}>
-              <div style={{ width: '80px', height: '80px', borderRadius: '50%', backgroundColor: '#F59E0B', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, border: '4px solid #F8FAFC' }}>
-                <BookOpen size={30} color="#fff" />
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ display: 'flex', gap: 'clamp(15px, 4vw, 30px)', alignItems: 'flex-start', position: 'relative', zIndex: 1 }}>
+              <div style={{ width: 'clamp(50px, 12vw, 80px)', height: 'clamp(50px, 12vw, 80px)', borderRadius: '50%', backgroundColor: '#F59E0B', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, border: '4px solid #F8FAFC' }}>
+                <BookOpen size={30} color="#fff" style={{ width: 'clamp(20px, 6vw, 30px)' }} />
               </div>
-              <div style={{ backgroundColor: '#fff', padding: '30px', borderRadius: '12px', border: '1px solid #E2E8F0', flex: 1 }}>
+              <div style={{ backgroundColor: '#fff', padding: 'clamp(20px, 5vw, 30px)', borderRadius: '12px', border: '1px solid #E2E8F0', flex: 1 }}>
                 <span className="mono" style={{ color: '#64748B', fontSize: '0.85rem', fontWeight: '700', marginBottom: '10px', display: 'block' }}>2022 - 2024</span>
-                <h3 style={{ fontSize: '1.5rem', fontWeight: '700', margin: '0 0 10px 0' }}>Baccalauréat Général</h3>
+                <h3 style={{ fontSize: 'clamp(1.2rem, 4vw, 1.5rem)', fontWeight: '700', margin: '0 0 10px 0' }}>Baccalauréat Général</h3>
                 <p style={{ color: '#475569', margin: 0, lineHeight: '1.6' }}>Lycée Madeleine Michelis. Spécialités : <b>Mathématiques</b> et <b>Numérique et Sciences Informatiques (NSI)</b>. Options : Mathématiques expertes & EPS.</p>
               </div>
             </motion.div>
 
             {/* BIA */}
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ display: 'flex', gap: '30px', alignItems: 'flex-start', position: 'relative', zIndex: 1 }}>
-              <div style={{ width: '80px', height: '80px', borderRadius: '50%', backgroundColor: '#10B981', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, border: '4px solid #F8FAFC' }}>
-                <Plane size={30} color="#fff" />
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ display: 'flex', gap: 'clamp(15px, 4vw, 30px)', alignItems: 'flex-start', position: 'relative', zIndex: 1 }}>
+              <div style={{ width: 'clamp(50px, 12vw, 80px)', height: 'clamp(50px, 12vw, 80px)', borderRadius: '50%', backgroundColor: '#10B981', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, border: '4px solid #F8FAFC' }}>
+                <Plane size={30} color="#fff" style={{ width: 'clamp(20px, 6vw, 30px)' }} />
               </div>
-              <div style={{ backgroundColor: '#fff', padding: '30px', borderRadius: '12px', border: '1px solid #E2E8F0', flex: 1 }}>
+              <div style={{ backgroundColor: '#fff', padding: 'clamp(20px, 5vw, 30px)', borderRadius: '12px', border: '1px solid #E2E8F0', flex: 1 }}>
                 <span className="mono" style={{ color: '#64748B', fontSize: '0.85rem', fontWeight: '700', marginBottom: '10px', display: 'block' }}>2021</span>
-                <h3 style={{ fontSize: '1.5rem', fontWeight: '700', margin: '0 0 10px 0' }}>B.I.A (Brevet d'Initiation Aéronautique)</h3>
+                <h3 style={{ fontSize: 'clamp(1.2rem, 4vw, 1.5rem)', fontWeight: '700', margin: '0 0 10px 0' }}>B.I.A (Brevet d'Initiation Aéronautique)</h3>
                 <p style={{ color: '#475569', margin: 0, lineHeight: '1.6' }}>Lycée Madeleine Michelis. Validation de compétences techniques rigoureuses : mécanique des fluides, réglementation aérienne et anticipation des risques.</p>
               </div>
             </motion.div>
@@ -190,7 +191,7 @@ export default function Profil() {
             <p style={{ color: '#64748B', fontSize: '1.1rem', maxWidth: '600px' }}>Mon apprentissage continu, mon engagement associatif et mes atouts linguistiques.</p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '30px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '30px' }}>
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ backgroundColor: '#F8FAFC', padding: '40px', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
               <BadgeCheck size={32} color="#2563EB" style={{ marginBottom: '20px' }} />
               <h3 style={{ fontSize: '1.3rem', fontWeight: '700', marginBottom: '20px' }}>Formations en ligne</h3>
@@ -242,7 +243,7 @@ export default function Profil() {
             <p style={{ color: '#64748B', fontSize: '1.1rem', maxWidth: '600px' }}>L'équilibre entre la rigueur de l'ingénierie et la créativité narrative.</p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px', marginBottom: '80px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '30px', marginBottom: '80px' }}>
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ backgroundColor: '#fff', padding: '40px', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
               <Shield size={32} color="#2563EB" style={{ marginBottom: '20px' }} />
               <h3 style={{ fontSize: '1.3rem', fontWeight: '700', marginBottom: '15px' }}>Rigueur Analytique</h3>
@@ -262,10 +263,10 @@ export default function Profil() {
             </motion.div>
           </div>
 
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ backgroundColor: '#0F172A', color: '#fff', padding: '50px', borderRadius: '24px', display: 'flex', gap: '40px', alignItems: 'flex-start', border: '1px solid rgba(255,255,255,0.1)', position: 'relative', overflow: 'hidden' }}>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ backgroundColor: '#0F172A', color: '#fff', padding: 'clamp(30px, 5vw, 50px)', borderRadius: '24px', display: 'flex', gap: '30px', alignItems: 'flex-start', flexWrap: 'wrap', border: '1px solid rgba(255,255,255,0.1)', position: 'relative', overflow: 'hidden' }}>
             <div style={{ position: 'absolute', top: 0, right: 0, width: '200px', height: '200px', background: 'radial-gradient(circle, rgba(37,99,235,0.1) 0%, transparent 70%)', zIndex: 0 }} />
             <AlertTriangle size={48} color="#F43F5E" style={{ flexShrink: 0, position: 'relative', zIndex: 1 }} />
-            <div style={{ position: 'relative', zIndex: 1 }}>
+            <div style={{ position: 'relative', zIndex: 1, flex: 1, minWidth: '250px' }}>
               <h3 style={{ fontSize: '1.6rem', fontWeight: '700', marginBottom: '15px', color: '#F43F5E' }}>Ma Faiblesse</h3>
               <p style={{ color: '#CBD5E1', lineHeight: '1.8', fontSize: '1.15rem', margin: 0, fontWeight: '300' }}>
                 Je suis parfois (beaucoup) trop prudent. Avant de déployer une fonctionnalité ou de modifier une architecture, mon cerveau génère automatiquement tous les pires scénarios possibles. Je suis le genre de développeur qui vérifie trois fois si la base de données est bien celle de "test" avant de la purger. Ça me fait parfois perdre un peu de temps au démarrage, mais l'avantage, c'est que quand j'appuie sur "Valider", je dors sur mes deux oreilles.
@@ -284,7 +285,7 @@ export default function Profil() {
             <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: '700', letterSpacing: '-1.5px' }}>Compétences du B.U.T.</h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))', gap: '40px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '40px' }}>
             {[
               { title: "RÉALISER", desc: "Développement d'applications complexes de A à Z (ex: MyPlumOr en React/Next.js)." },
               { title: "OPTIMISER", desc: "Amélioration des performances algorithmiques et de la structure des données." },
@@ -305,11 +306,10 @@ export default function Profil() {
         </div>
       </section>
 
-      {/* ===== RÉFLEXION SUR LES ACQUIS (REFAITE ET STYLISÉE) ===== */}
+      {/* ===== RÉFLEXION SUR LES ACQUIS ===== */}
       <section style={{ padding: '120px 5%', backgroundColor: '#FFFFFF', borderTop: '1px solid #E2E8F0' }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
           
-          {/* HEADER SECTION RÉFLEXION */}
           <div style={{ textAlign: 'center', marginBottom: '100px' }}>
             <Award size={48} color="#2563EB" style={{ margin: '0 auto 30px' }} />
             <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: '700', letterSpacing: '-1.5px', marginBottom: '20px' }}>
@@ -322,8 +322,8 @@ export default function Profil() {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '100px' }}>
             
-            {/* 01 : L'AUTONOMIE (Image à droite) */}
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '60px', alignItems: 'center' }}>
+            {/* 01 : L'AUTONOMIE */}
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '60px', alignItems: 'center' }}>
               <div style={{ order: 1 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
                   <span className="mono" style={{ fontSize: '3rem', fontWeight: '900', color: '#E2E8F0', lineHeight: 1 }}>01</span>
@@ -332,19 +332,17 @@ export default function Profil() {
                 </div>
                 <h3 style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '20px', letterSpacing: '-1px' }}>L'autonomie technique</h3>
                 <p style={{ color: '#475569', fontSize: '1.2rem', lineHeight: '1.7' }}>
-                  La création de <b>MyPlumOr</b> a été mon plus grand défi d'apprentissage. J'ai dû sortir du cadre scolaire pour explorer des problématiques réelles de production : intégration de <b>Stripe Connect</b> pour les flux financiers et gestion de l'état global en Next.js. Cette expérience m'a appris à naviguer dans des documentations techniques denses et à résoudre des erreurs critiques en autonomie, renforçant ma capacité à <i>Réaliser</i> et <i>Administrer</i> des solutions viables.
+                  La création de <b>MyPlumOr</b> a été mon plus grand défi d'apprentissage. J'ai dû sortir du cadre scolaire pour explorer des problématiques réelles de production : intégration de <b>Stripe Connect</b> pour les flux financiers et gestion de l'état global en Next.js. Cette expérience m'a appris à naviguer dans des documentations techniques denses et à résoudre des erreurs critiques en autonomie.
                 </p>
               </div>
               <div style={{ order: 2, borderRadius: '24px', overflow: 'hidden', height: '400px', boxShadow: '0 20px 40px rgba(0,0,0,0.08)' }}>
-                {/* Remplace cette URL par une capture de ton code ou de MyPlumOr plus tard */}
                 <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000" alt="Code Autonomie" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
             </motion.div>
 
-            {/* 02 : LA VISION AMOA (Image à gauche) */}
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '60px', alignItems: 'center' }}>
+            {/* 02 : LA VISION AMOA */}
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '60px', alignItems: 'center' }}>
               <div style={{ order: 1, borderRadius: '24px', overflow: 'hidden', height: '400px', boxShadow: '0 20px 40px rgba(0,0,0,0.08)' }}>
-                {/* Remplace cette URL par une image stratégique/schéma */}
                 <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1000" alt="Stratégie AMOA" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
               <div style={{ order: 2 }}>
@@ -355,13 +353,13 @@ export default function Profil() {
                 </div>
                 <h3 style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '20px', letterSpacing: '-1px' }}>La vision AMOA</h3>
                 <p style={{ color: '#475569', fontSize: '1.2rem', lineHeight: '1.7' }}>
-                  Au fil de mes Situations d'Apprentissage et d'Évaluation (SAÉ), j'ai réalisé que le code pur n'est qu'un moyen. Ce qui me stimule réellement, c'est la <b>Conduite de projet</b> et l'alignement entre technique et stratégie (<i>Optimiser</i>). Ce constat est à l'origine de mon choix pour la filière <b>MIAGE</b> : je souhaite être le pont entre les besoins métiers d'une organisation et les solutions logicielles déployées.
+                  Au fil de mes Situations d'Apprentissage et d'Évaluation (SAÉ), j'ai réalisé que le code pur n'est qu'un moyen. Ce qui me stimule réellement, c'est la <b>Conduite de projet</b> et l'alignement entre technique et stratégie. Ce constat est à l'origine de mon choix pour la filière <b>MIAGE</b> : je souhaite être le pont entre les besoins métiers d'une organisation et les solutions logicielles déployées.
                 </p>
               </div>
             </motion.div>
 
-            {/* 03 : INTELLIGENCE COLLECTIVE (Image à droite) */}
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '60px', alignItems: 'center' }}>
+            {/* 03 : INTELLIGENCE COLLECTIVE */}
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '60px', alignItems: 'center' }}>
               <div style={{ order: 1 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
                   <span className="mono" style={{ fontSize: '3rem', fontWeight: '900', color: '#E2E8F0', lineHeight: 1 }}>03</span>
@@ -374,24 +372,23 @@ export default function Profil() {
                 </p>
               </div>
               <div style={{ order: 2, borderRadius: '24px', overflow: 'hidden', height: '400px', boxShadow: '0 20px 40px rgba(0,0,0,0.08)' }}>
-                {/* Remplace cette URL par une photo d'équipe ou collaboration */}
                 <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1000" alt="Equipe Projet" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
             </motion.div>
 
           </div>
 
-          {/* LE BILAN GLOBAL (BLOC STYLISÉ EN BAS) */}
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUp} style={{ marginTop: '100px', backgroundColor: '#0F172A', borderRadius: '30px', padding: '60px', color: '#fff', position: 'relative', overflow: 'hidden', display: 'flex', gap: '40px', alignItems: 'center', flexWrap: 'wrap' }}>
+          {/* LE BILAN GLOBAL */}
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUp} style={{ marginTop: '100px', backgroundColor: '#0F172A', borderRadius: '30px', padding: 'clamp(30px, 5vw, 60px)', color: '#fff', position: 'relative', overflow: 'hidden', display: 'flex', gap: '40px', alignItems: 'center', flexWrap: 'wrap' }}>
             <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '300px', height: '300px', background: 'radial-gradient(circle, rgba(37,99,235,0.2) 0%, transparent 70%)', zIndex: 0 }} />
             
-            <div style={{ backgroundColor: 'rgba(255,255,255,0.1)', padding: '20px', borderRadius: '50%', zIndex: 1 }}>
+            <div style={{ backgroundColor: 'rgba(255,255,255,0.1)', padding: '20px', borderRadius: '50%', zIndex: 1, flexShrink: 0 }}>
               <Lightbulb size={48} color="#2563EB" />
             </div>
 
-            <div style={{ flex: 1, minWidth: '300px', zIndex: 1 }}>
-              <h3 style={{ fontSize: '2rem', fontWeight: '700', marginBottom: '15px' }}>Bilan global : De Technicien à Stratège.</h3>
-              <p style={{ color: '#CBD5E1', fontSize: '1.2rem', lineHeight: '1.7', margin: 0 }}>
+            <div style={{ flex: 1, minWidth: '250px', zIndex: 1 }}>
+              <h3 style={{ fontSize: 'clamp(1.5rem, 4vw, 2rem)', fontWeight: '700', marginBottom: '15px' }}>Bilan global : De Technicien à Stratège.</h3>
+              <p style={{ color: '#CBD5E1', fontSize: '1.15rem', lineHeight: '1.7', margin: 0 }}>
                 Ces deux années de B.U.T m'ont profondément transformé. Je ne vois plus une application web comme un simple ensemble de fichiers techniques, mais comme un produit qui doit répondre à un <b>besoin utilisateur</b> et à une <b>logique économique</b>. Ma plus grande force aujourd'hui est d'avoir "mis les mains dans le code" pour être d'autant plus pertinent et réaliste demain dans le conseil, l'architecture et la gestion de projet.
               </p>
             </div>
@@ -409,12 +406,12 @@ export default function Profil() {
             <h2 style={{ fontSize: '2.5rem', fontWeight: '700', letterSpacing: '-1px' }}>Référence Professionnelle.</h2>
           </div>
           
-          <div style={{ backgroundColor: '#F8FAFC', padding: '50px', borderRadius: '16px', border: '1px solid #E2E8F0', position: 'relative' }}>
-            <p style={{ fontSize: '1.2rem', fontStyle: 'italic', color: '#475569', lineHeight: '1.7', marginBottom: '40px', textAlign: 'center' }}>
+          <div style={{ backgroundColor: '#F8FAFC', padding: 'clamp(30px, 5vw, 50px)', borderRadius: '16px', border: '1px solid #E2E8F0', position: 'relative' }}>
+            <p style={{ fontSize: '1.15rem', fontStyle: 'italic', color: '#475569', lineHeight: '1.7', marginBottom: '40px', textAlign: 'center' }}>
               "Sajid a fait preuve d'une grande rigueur lors de son passage chez nous. Il a su s'approprier les contraintes de notre métier pour proposer des solutions techniques efficaces."
             </p>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '20px' }}>
-              <div style={{ width: '60px', height: '60px', borderRadius: '50%', backgroundColor: '#0F172A', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ width: '60px', height: '60px', borderRadius: '50%', backgroundColor: '#0F172A', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 <UserCheck size={28} color="#fff" />
               </div>
               <div style={{ textAlign: 'left' }}>
